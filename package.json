@@ -1,0 +1,15 @@
+{
+  "name": "aoc-2019",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "garrettm <glmitchell@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc --watch",
+    "test": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "typescript": "^3.7.2"
+  }
+}
