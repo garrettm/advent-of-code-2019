@@ -1,12 +1,12 @@
 import {Module} from './types'
-import * as fs from 'fs'
+import * as input from './input'
 
 function fuelRequiredForMass(mass: number) {
   return Math.floor(mass / 3) - 2
 }
 
 function readModules(): Module[] {
-  const contents = fs.readFileSync('./input/1.txt', {encoding: 'utf8'})
+  const contents = input.read(1)
   const lines = contents.split('\n').filter(l => l)
   return lines.map(l => ({mass: parseInt(l)}))
 }
