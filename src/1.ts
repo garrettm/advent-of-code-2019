@@ -1,5 +1,8 @@
-import {Module} from './types'
 import * as input from './input'
+
+type Module = {
+  mass: number
+}
 
 function fuelRequiredForMass(mass: number) {
   return Math.floor(mass / 3) - 2
