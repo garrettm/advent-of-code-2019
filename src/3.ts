@@ -105,7 +105,7 @@ function manhattanDistanceOfIntersection(intersection: Intersection) {
 function partOne() {
   const [one, two] = readPaths()
   const intersections = findIntersections(one, two)
-  return intersections.map(manhattanDistanceOfIntersection)
+  return Math.min(...intersections.map(manhattanDistanceOfIntersection))
 }
 
 function partTwo() {
