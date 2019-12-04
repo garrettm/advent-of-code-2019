@@ -1,3 +1,3 @@
-import run from './3'
+import run from './4'
 const result = run()
 console.log('result: ', result)
