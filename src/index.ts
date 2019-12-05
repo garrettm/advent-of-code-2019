@@ -1,3 +1,2 @@
-import run from './4'
-const result = run()
-console.log('result: ', result)
+import run from './5'
+run()
