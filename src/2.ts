@@ -45,7 +45,7 @@ function executeUntilCompletion(input: State): State {
   return state
 }
 
-const initialMemory = input.read(2).split(',').filter(n => n).map(n => parseInt(n))
+const initialMemory = input.readFile(2).split(',').filter(n => n).map(n => parseInt(n))
 
 function initialState(noun = 12, verb = 2): State {
   const memory = [...initialMemory]

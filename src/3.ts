@@ -1,7 +1,7 @@
 import * as input from './input'
 
 function readPaths() {
-  const paths = input.read(3).split('\n')
+  const paths = input.readFile(3).split('\n')
   return [readPath(paths[0]), readPath(paths[1])]
 }
 

@@ -9,7 +9,7 @@ function fuelRequiredForMass(mass: number) {
 }
 
 function readModules(): Module[] {
-  const contents = input.read(1)
+  const contents = input.readFile(1)
   const lines = contents.split('\n').filter(l => l)
   return lines.map(l => ({mass: parseInt(l)}))
 }
