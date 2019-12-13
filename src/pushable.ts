@@ -1,7 +1,7 @@
-export type PushableGenerator<A = number> = AsyncGenerator<A, undefined, undefined> & {push: (n: A) => void}
+export type PushableGenerator<A = bigint> = AsyncGenerator<A, undefined, undefined> & {push: (n: A) => void}
 
 let p = 0
-export function pushable<A = number>(...iterators: (Iterable<A>)[]): PushableGenerator<A> {
+export function pushable<A = bigint>(...iterators: (Iterable<A>)[]): PushableGenerator<A> {
   const pullQueue: ((res: IteratorResult<A, undefined>) => void)[] = []
   const pushQueue: A[] = []
 

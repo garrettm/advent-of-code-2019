@@ -1,4 +1,4 @@
-import run from './8'
+import run from './9'
 
 async function runLog() {
   try {

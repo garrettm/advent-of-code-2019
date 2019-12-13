@@ -4,11 +4,11 @@ import {pushable} from './pushable'
 
 const data = input.readFile(7)
 // const data = `3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5`
-const memory = data.split(',').map(n => parseInt(n))
-const initial = {memory, position: 0}
+const memory = data.split(',').map(n => BigInt(parseInt(n)))
+const initial = {memory, relativeBase: 0, position: 0}
 
 async function partOne() {
-  let max = Number.MIN_VALUE
+  let max = BigInt(Number.MIN_VALUE)
 
   for (let a = 0; a < 5; a++) {
     for (let b = 0; b < 5; b++) {
@@ -23,41 +23,41 @@ async function partOne() {
           for (let e = 0; e < 5; e++) {
             if (e === a || e === b || e === c || e === d) { continue }
 
-            let signal = 0
-            function output(n: number) {
+            let signal = 0n
+            function output(n: bigint) {
               console.log('output: ', n)
-              signal = n as number
+              signal = n
             }
 
             console.log('[one] running: ', [a, b, c, d, e])
 
             const ampA = new IntcodeCPU(initial)
             await ampA.execute({
-              input: [a, signal],
+              input: [BigInt(a), signal],
               output
             })
 
             const ampB = new IntcodeCPU(initial)
             await ampB.execute({
-              input: [b, signal],
+              input: [BigInt(b), signal],
               output
             })
 
             const ampC = new IntcodeCPU(initial)
             await ampC.execute({
-              input: [c, signal],
+              input: [BigInt(c), signal],
               output
             })
 
             const ampD = new IntcodeCPU(initial)
             await ampD.execute({
-              input: [d, signal],
+              input: [BigInt(d), signal],
               output
             })
 
             const ampE = new IntcodeCPU(initial)
             await ampE.execute({
-              input: [e, signal],
+              input: [BigInt(e), signal],
               output
             })
 
@@ -75,7 +75,7 @@ async function partOne() {
 async function partTwo() {
   const MIN = 5
   const MAX = 10
-  let max = Number.MIN_VALUE
+  let max = BigInt(Number.MIN_VALUE)
 
   for (let a = MIN; a < MAX; a++) {
     for (let b = MIN; b < MAX; b++) {
@@ -97,17 +97,17 @@ async function partTwo() {
             const ampD = new IntcodeCPU(initial, 'D')
             const ampE = new IntcodeCPU(initial, 'E')
 
-            let eSignal = NaN
+            let eSignal: bigint = NaN as any
 
-            const aInput = pushable([a, 0])
+            const aInput = pushable([BigInt(a), 0n])
             const aOutput = pushable()
-            const bInput = pushable([b])
+            const bInput = pushable([BigInt(b)])
             const bOutput = pushable()
-            const cInput = pushable([c])
+            const cInput = pushable([BigInt(c)])
             const cOutput = pushable()
-            const dInput = pushable([d])
+            const dInput = pushable([BigInt(d)])
             const dOutput = pushable()
-            const eInput = pushable([e])
+            const eInput = pushable([BigInt(e)])
             const eOutput = pushable()
 
             async function forwardA() {
@@ -177,7 +177,7 @@ async function partTwo() {
             await execD
             await execE
             
-            max = Math.max(eSignal, max)
+            max = eSignal > max ? eSignal : max
           }
         }
       }

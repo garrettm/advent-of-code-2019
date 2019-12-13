@@ -7,7 +7,7 @@
   "scripts": {
     "watch": "tsc --watch",
     "test": "node dist/index.js",
-    "testwatch": "nodemon dist/index.js",
+    "testwatch": "nodemon --max-old-space-size=8192 dist/index.js",
     "debug": "node --inspect-brk dist/index.js"
   },
   "devDependencies": {
