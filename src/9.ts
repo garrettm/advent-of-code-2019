@@ -18,11 +18,11 @@ const memory = data.split(',').map(n => BigInt(parseInt(n)))
 async function partOne() {
   const cpu = IntcodeCPU.from(memory)
   const finalState = await cpu.execute({...defaultIO, input: [1n], debug: false})
-  return finalState
 }
 
-function partTwo() {
-
+async function partTwo() {
+  const cpu = IntcodeCPU.from(memory)
+  const finalState = await cpu.execute({...defaultIO, input: [2n], debug: false})
 }
 
-export default partOne
+export default partTwo
